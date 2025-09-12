@@ -1,4 +1,3 @@
-# 2025/05/16 - 01093235 Enabling plugin for referential integrity
+# 2025/07/04 - 0111325 Enabling plugin for referential integrity
 
-dsconfig set-plugin-prop --plugin-name "Referential Integrity" \
-  --set enabled:true --set "update-interval:1 s"
+dsconfig set-plugin-prop --plugin-name "Referential Integrity" --set enabled:true --set "update-interval:1 s"

@@ -9,6 +9,9 @@ dsconfig create-local-db-index --backend-name userRoot --index-name cpSAMAccount
 dsconfig create-local-db-index --backend-name userRoot --index-name employeeType --set index-type:equality
 dsconfig create-local-db-index --backend-name userRoot --index-name cpObjectGUID --set index-type:equality
 
+#Index for the country Attribute - 31-Jan-24
+dsconfig create-local-db-index --backend-name userRoot --index-name co --set index-type:equality
+
 dsconfig create-plugin --plugin-name "Accessidentified Remove Leavers" --type purge-expired-data --set enabled:true --set datetime-attribute:cpleaverdate --set "expiration-offset:1 m"
 
 #Identity References VA to set cplegacyentry for Corp users
@@ -28,3 +31,6 @@ dsconfig create-virtual-attribute --name "CP Mirror VA for ADAccounts - corp" --
 
 #CP Mirror VA for ADAccounts - legacy
 dsconfig create-virtual-attribute --name "CP Mirror VA for ADDomains - legacy" --type mirror --set enabled:true --set attribute-type:cpADAccountOther --set base-dn:ou=AltranUsers,dc=azure,dc=accessidentifiedcloud,dc=com --set base-dn:ou=AricentUsers,dc=azure,dc=accessidentifiedcloud,dc=com --set conflict-behavior:merge-real-and-virtual --set source-attribute:cpADAccount --set source-entry-dn-attribute:cplinkedentry
+
+#Composite Index for Country attribute - 31-Jan-24
+dsconfig create-local-db-composite-index --backend-name userRoot --index-name UDZIAGroups --set "index-filter-pattern:(&(co=?)(objectClass=?))" --set index-base-dn-pattern:ou=ZIA-index,ou=Services,dc=azure,dc=accessidentifiedcloud,dc=com --set index-entry-limit:250000 --set prime-index:true

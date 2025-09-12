@@ -1,0 +1,42 @@
+# Author:   
+# Date:     2 Nov 2023
+# Purpose:  Single Identity - Identity schema
+# --- HISTORY -------------------------
+# # Updated  new Data model along with few CORE Scheam Attributes
+#	cn
+#	givenName
+#	sn
+#	displayName
+#	mail
+#	manager
+#	title
+#	co
+#	employeeNumber
+#	userPrincipalName
+################################################################################
+dn: cn=schema
+objectClass: top
+objectClass: ldapSubentry
+objectClass: subschema
+cn: schema
+attributeTypes: ( cpLoginId-OID NAME 'cpLoginId' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 USAGE userApplications )
+attributeTypes: ( cpGlobalID-OID NAME 'cpGlobalID' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.36 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpUpn-OID NAME 'cpUpn' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpExternalMail-OID NAME 'cpExternalMail' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 USAGE userApplications )
+attributeTypes: ( cpLocalID-OID NAME 'cpLocalID' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpGrade-OID NAME 'cpGrade' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpIdentityType-OID NAME 'cpIdentityType' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpIdentitySubType-OID NAME 'cpIdentitySubType' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpCompany-OID NAME 'cpCompany' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpSbucode-OID NAME 'cpSbucode' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpBusinessUnit-OID NAME 'cpBusinessUnit' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpDepartment-OID NAME 'cpDepartment' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpThumbnailPhoto-OID NAME 'cpThumbnailPhoto' SYNTAX 1.3.6.1.4.1.1466.115.121.1.40 USAGE userApplications )
+attributeTypes: ( cpMobile-OID NAME 'cpMobile' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpTelephoneNumber-OID NAME 'cpTelephoneNumber' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpPersonalMail-OID NAME 'cpPersonalMail' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpPersonalPhone-OID NAME 'cpPersonalPhone' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpIsActive-OID NAME 'cpIsActive' SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( cpLeaverDate-OID NAME 'cpLeaverDate' SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 USAGE userApplications )
+objectClasses: ( cpIdentity-OID NAME 'cpIdentity' SUP top STRUCTURAL MUST uid MAY ( cn $ cpIdentityType $ cpIdentitySubType $ cpLoginId $ cpGlobalID $ CreateTimestamp $  cpBusinessUnit $ cpCompany $ cpDepartment $ displayName $ cpExternalMail  $ cpGrade $ cpLeaverDate $ cpLocalID $ cpMobile $ cpPersonalMail $ cpPersonalPhone $ cpSbucode $ cpTelephoneNumber $ cpThumbnailPhoto $ cpUpn $ cpIsActive $ givenName $ sn $ co $  l $ mail $ manager $ employeeNumber $ title $ pf-pingid-local-fallback $ userPassword  ) )
+

@@ -1,0 +1,11 @@
+#
+# Configure the automatic purging of expired access grants
+#
+
+dsconfig create-plugin \
+    --plugin-name "PFExpiredAccessGrantsCleanUpPlugin"  \
+    --type clean-up-expired-pingfederate-persistent-access-grants  \
+    --set enabled:true  \
+    --set base-dn:ou=accessgrants,o=appintegrations  \
+    --set "polling-interval:5 m"  \
+    --set max-updates-per-second:100

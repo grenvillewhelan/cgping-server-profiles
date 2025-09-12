@@ -45,6 +45,3 @@ dsconfig create-virtual-attribute \
           --set "value":"config-write" \
           --set "value":"modify-acl" \
           --set "value":"update-schema"
-dsconfig set-virtual-attribute-prop \
-          --name entryDN  \
-          --set enabled:true

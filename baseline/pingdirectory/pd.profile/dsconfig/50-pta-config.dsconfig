@@ -1,37 +1,35 @@
-dsconfig set-trust-manager-provider-prop --provider-name "JKS" --set enabled:true
-dsconfig set-trust-manager-provider-prop --provider-name JKS --set include-jvm-default-issuers:true
+# Configurations required for pass through authentication to Active Directory
+# Testing with the active-directory external-server was generating connectivity issues so used ldap external-server since this is DEV environment
+# Blind Trust trust-manager-provider is only appropriate for Dev environment
+
+dsconfig set-trust-manager-provider-prop \
+    --provider-name "JKS" \
+    --set enabled:true \
+    --set include-jvm-default-issuers:true
+
+dsconfig set-trust-manager-provider-prop \
+    --provider-name "JVM-Default" \
+    --set enabled:true
 
 dsconfig create-external-server \
-   --server-name Corp-Ext-Server-01 \
-   --type active-directory \
-   --set server-host-name:10.247.124.11 \
-   --set server-port:636 \
-   --set "bind-dn:CN=SVC-IN-PINGPOC,OU=DDA - India,OU=Accounts,OU=Resources,DC=corp,DC=azure,DC=accessidentifiedcloud,DC=com" \
-   --set "password:${CORP_AD_SYNC_PASSWORD}" \
-   --set connection-security:ssl \
-   --set key-manager-provider:Null \
-   --set "trust-manager-provider:JKS"
-
-dsconfig create-external-server \
-   --server-name Corp-Ext-Server-02 \
-   --type active-directory \
-   --set server-host-name:10.36.66.37 \
-   --set server-port:636 \
-   --set "bind-dn:CN=SVC-IN-PINGPOC,OU=DDA - India,OU=Accounts,OU=Resources,DC=corp,DC=azure,DC=accessidentifiedcloud,DC=com" \
-   --set "password:${CORP_AD_SYNC_PASSWORD}" \
-   --set connection-security:ssl \
-   --set key-manager-provider:Null \
-   --set "trust-manager-provider:JKS"
+    --server-name Corp-Ext-Server-01 \
+    --type active-directory \
+    --set server-host-name:10.247.124.11 \
+    --set server-port:636 \
+    --set "bind-dn:CN=SVC-CORP-PINGPDPTA,OU=Administrators,OU=DDA - SuperDDA,OU=Accounts,OU=Resources,DC=corp,DC=azure,DC=accessidentifiedcloud,DC=com" \
+    --set "password:${CORP_AD_SYNC_PASSWORD}" \
+    --set connection-security:ssl \
+    --set key-manager-provider:Null \
+    --set "trust-manager-provider:JKS"
 
 dsconfig create-pass-through-authentication-handler \
-   --handler-name "CorpUsers PTA" \
-   --type ldap \
-   --set server:Corp-Ext-Server-01 \
-   --set server:Corp-Ext-Server-02 \
-   --set included-local-entry-base-dn:ou=CorpUsers,dc=azure,dc=accessidentifiedcloud,dc=com \
-   --set search-base-dn:dc=corp,dc=azure,dc=accessidentifiedcloud,dc=com \
-   --set "search-filter-pattern:sAMAccountName={cpSAMAccountName}"
+    --handler-name "CorpUsers PTA"  \
+    --type ldap  \
+    --set included-local-entry-base-dn:ou=CorpUsers,dc=azure,dc=accessidentifiedcloud,dc=com  \
+    --set server:Corp-Ext-Server-01  \
+    --set search-base-dn:dc=corp,dc=azure,dc=accessidentifiedcloud,dc=com  \
+    --set "search-filter-pattern:sAMAccountName={cpSAMAccountName}"
 
 dsconfig set-pass-through-authentication-handler-prop \
-    --handler-name "P1AS Aggregate PTA Handler" \
+    --handler-name "P1AS Aggregate PTA Handler"  \
     --add "subordinate-pass-through-authentication-handler:CorpUsers PTA"

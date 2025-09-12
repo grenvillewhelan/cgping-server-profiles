@@ -1,0 +1,1 @@
+dsconfig set-connection-handler-prop --handler-name "LDAPS Connection Handler" --set ssl-client-auth-policy:disabled
