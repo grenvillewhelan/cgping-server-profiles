@@ -1,21 +1,21 @@
-#GW#dsconfig create-root-dn-user \
-#GW#        --user-name "{customer_name} dnmanager"  \
-#GW#        --set "alternate-bind-dn:cn={customer_name} dnmanager"  \
-#GW#        --set "description:Root account for {customer_name}."  \
-#GW#        --set password:${DMANAGER_PASSWORD}  \
-#GW#        --set first-name:{customer_name}  \
-#GW#        --set last-name:dnmanager  \
-#GW#        --set inherit-default-root-privileges:false  \
-#GW#        --set privilege:audit-data-security  \
-#GW#        --set privilege:collect-support-data  \
-#GW#        --set privilege:disconnect-client  \
-#GW#        --set privilege:exec-task  \
-#GW#        --set privilege:ldif-export  \
-#GW#        --set privilege:ldif-import  \
-#GW#        --set privilege:password-reset  \
-#GW#        --set privilege:soft-delete-read  \
-#GW#        --set privilege:unindexed-search  \
-#GW#        --set privilege:unindexed-search-with-control  \
-#GW#        --set require-secure-authentication:true  \
-#GW#        --set require-secure-connections:true \
-#GW#        --set modify-acl
+dsconfig create-root-dn-user \
+        --user-name "{customer_name} dnmanager"  \
+        --set "alternate-bind-dn:cn={customer_name} dnmanager"  \
+        --set "description:Root account for {customer_name}."  \
+        --set password:${DMANAGER_PASSWORD}  \
+        --set first-name:{customer_name}  \
+        --set last-name:dnmanager  \
+        --set inherit-default-root-privileges:false  \
+        --set privilege:audit-data-security  \
+        --set privilege:collect-support-data  \
+        --set privilege:disconnect-client  \
+        --set privilege:exec-task  \
+        --set privilege:ldif-export  \
+        --set privilege:ldif-import  \
+        --set privilege:password-reset  \
+        --set privilege:soft-delete-read  \
+        --set privilege:unindexed-search  \
+        --set privilege:unindexed-search-with-control  \
+        --set require-secure-authentication:true  \
+        --set require-secure-connections:true \
+        --set modify-acl
