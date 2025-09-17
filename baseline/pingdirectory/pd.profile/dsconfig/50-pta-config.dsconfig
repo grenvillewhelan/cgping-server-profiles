@@ -16,7 +16,7 @@ dsconfig create-external-server \
     --type active-directory \
     --set server-host-name:10.247.124.11 \
     --set server-port:636 \
-    --set "bind-dn:CN=SVC-CORP-PINGPDPTA,OU=Administrators,OU=DDA - SuperDDA,OU=Accounts,OU=Resources,DC=corp,DC=azure,DC=accessidentifiedcloud,DC=com" \
+    --set "bind-dn:CN=SVC-CORP-PINGPDPTA,OU=Administrators,OU=DDA - SuperDDA,OU=Accounts,OU=Resources,DC=corp,DC=capgemini,DC=com" \
     --set "password:${CORP_AD_SYNC_PASSWORD}" \
     --set connection-security:ssl \
     --set key-manager-provider:Null \
@@ -25,9 +25,9 @@ dsconfig create-external-server \
 dsconfig create-pass-through-authentication-handler \
     --handler-name "CorpUsers PTA"  \
     --type ldap  \
-    --set included-local-entry-base-dn:ou=CorpUsers,dc=azure,dc=accessidentifiedcloud,dc=com  \
+    --set included-local-entry-base-dn:ou=CorpUsers,dc=capgemini,dc=com  \
     --set server:Corp-Ext-Server-01  \
-    --set search-base-dn:dc=corp,dc=azure,dc=accessidentifiedcloud,dc=com  \
+    --set search-base-dn:dc=corp,dc=capgemini,dc=com  \
     --set "search-filter-pattern:sAMAccountName={cpSAMAccountName}"
 
 dsconfig set-pass-through-authentication-handler-prop \

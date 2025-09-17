@@ -5,7 +5,7 @@ dsconfig create-plugin \
     --type unique-attribute  \
     --set enabled:true  \
     --set type:cn  \
-    --set base-dn:ou=ZIA,ou=Services,dc=azure,dc=accessidentifiedcloud,dc=com  \
+    --set base-dn:ou=ZIA,ou=Services,dc=capgemini,dc=com  \
     --set "filter:(objectClass=groupOfNames)"
 
 dsconfig create-plugin \
@@ -13,5 +13,5 @@ dsconfig create-plugin \
     --type unique-attribute  \
     --set enabled:true  \
     --set type:cn  \
-    --set base-dn:ou=ZPA,ou=Services,dc=azure,dc=accessidentifiedcloud,dc=com  \
+    --set base-dn:ou=ZPA,ou=Services,dc=capgemini,dc=com  \
     --set "filter:(objectClass=groupOfNames)"

@@ -4,29 +4,29 @@
     --provider-name "Blind Trust" \
     --set enabled:true
 
-#  dsconfig create-external-server \
-#    --server-name "${DA_PINGFEDERATE_INSTANCE_NAME}" \
-#    --type "http" \
-#    --set "base-url:https://${PINGFEDERATE_ENGINE_SERVER}:${PINGFEDERATE_ENGINE_PORT}" \
-#    --set "hostname-verification-method:allow-all" \
-#    --set "trust-manager-provider:Blind Trust"
+#GW#  dsconfig create-external-server \
+#GW#    --server-name "${DA_PINGFEDERATE_INSTANCE_NAME}" \
+#GW#    --type "http" \
+#GW#    --set "base-url:https://${PINGFEDERATE_ENGINE_SERVER}:${PINGFEDERATE_ENGINE_PORT}" \
+#GW#    --set "hostname-verification-method:allow-all" \
+#GW#    --set "trust-manager-provider:Blind Trust"
 
-#  dsconfig create-identity-mapper \
-#    --mapper-name "${DA_IDENTITY_MAPPER_NAME}" \
-#    --type "exact-match" \
-#    --set enabled:true \
-#    --set "match-attribute:entryUUID" \
-#    --set "match-base-dn:${USER_BASE_DN}"
+#GW#  dsconfig create-identity-mapper \
+#GW#    --mapper-name "${DA_IDENTITY_MAPPER_NAME}" \
+#GW#    --type "exact-match" \
+#GW#    --set enabled:true \
+#GW#    --set "match-attribute:entryUUID" \
+#GW#    --set "match-base-dn:${USER_BASE_DN}"
 
-#  dsconfig create-access-token-validator \
-#    --validator-name "${DA_PINGFEDERATE_ATV_NAME}" \
-#    --type "ping-federate" \
-#    --set enabled:true \
-#    --set "identity-mapper:${DA_IDENTITY_MAPPER_NAME}" \
-#    --set "subject-claim-name:sub" \
-#    --set "authorization-server:${DA_PINGFEDERATE_INSTANCE_NAME}" \
-#    --set "client-id:${DA_OAUTH_TOKEN_VALIDATOR_CLIENT_ID}" \
-#    --set "client-secret:${DA_OAUTH_TOKEN_VALIDATOR_SECRET}"
+#GW#  dsconfig create-access-token-validator \
+#GW#    --validator-name "${DA_PINGFEDERATE_ATV_NAME}" \
+#GW#    --type "ping-federate" \
+#GW#    --set enabled:true \
+#GW#    --set "identity-mapper:${DA_IDENTITY_MAPPER_NAME}" \
+#GW#    --set "subject-claim-name:sub" \
+#GW#    --set "authorization-server:${DA_PINGFEDERATE_INSTANCE_NAME}" \
+#GW#    --set "client-id:${DA_OAUTH_TOKEN_VALIDATOR_CLIENT_ID}" \
+#GW#    --set "client-secret:${DA_OAUTH_TOKEN_VALIDATOR_SECRET}"
 
 #
 # The search-base-dn value is the DN of a valid base entry where managed users are stored.
@@ -78,13 +78,13 @@ dsconfig set-access-control-handler-prop \
 dsconfig set-access-control-handler-prop \
   --add 'global-aci:(targetcontrol="1.3.6.1.4.1.4203.1.10.2 || 1.3.6.1.4.1.30221.2.5.40")(version 3.0;acl "Authenticated access to the no-op and password validation details request controls for the Delegated Admin API"; allow (read) userdn="ldap:///all";)'
 
-#dsconfig set-http-servlet-extension-prop \
-#  --extension-name "Delegated Admin" \
-#  --set "access-token-scope:${DA_EXCLUSIVE_SCOPE_NAME}" \
-#  --set "response-header:Cache-Control: no-cache, no-store, must-revalidate" \
-#  --set "access-token-validator:${DA_PINGFEDERATE_ATV_NAME}" \
-#  --set "response-header:Expires: 0" \
-#  --set "response-header:Pragma: no-cache"
+#GW#dsconfig set-http-servlet-extension-prop \
+#GW#  --extension-name "Delegated Admin" \
+#GW#  --set "access-token-scope:${DA_EXCLUSIVE_SCOPE_NAME}" \
+#GW#  --set "response-header:Cache-Control: no-cache, no-store, must-revalidate" \
+#GW#  --set "access-token-validator:${DA_PINGFEDERATE_ATV_NAME}" \
+#GW#  --set "response-header:Expires: 0" \
+#GW#  --set "response-header:Pragma: no-cache"
 
 #
 # Enable virtual attributes on Ping Directory Server.
@@ -125,39 +125,39 @@ dsconfig set-http-servlet-extension-prop \
 #
 # Create Delegated Admin user.
 #
-#dsconfig create-delegated-admin-rights \
-#  --rights-name "administrator-user-${DA_DEFAULT_GRANT_TYPE_CLIENT_ID}" \
-#  --set "admin-user-dn:uid=admin,${USER_BASE_DN}" \
-#  --set enabled:true
+#GW#dsconfig create-delegated-admin-rights \
+#GW#  --rights-name "administrator-user-${DA_DEFAULT_GRANT_TYPE_CLIENT_ID}" \
+#GW#  --set "admin-user-dn:uid=admin,${USER_BASE_DN}" \
+#GW#  --set enabled:true
 
 #
 # Create Delegated Admin Rights for users.
 # Added upload and download permissions to enable the user to download
-#dsconfig create-delegated-admin-resource-rights \
-#  --rights-name "administrator-user-${DA_DEFAULT_GRANT_TYPE_CLIENT_ID}" \
-#  --rest-resource-type users \
-#  --set admin-permission:create \
-#  --set admin-permission:read \
-#  --set admin-permission:update \
-#  --set admin-permission:download \
-#  --set admin-permission:upload \
-#  --set admin-permission:delete \
-#  --set admin-permission:manage-group-membership \
-#  --set admin-scope:all-resources-in-base \
-#  --set enabled:true
+#GW#dsconfig create-delegated-admin-resource-rights \
+#GW#  --rights-name "administrator-user-${DA_DEFAULT_GRANT_TYPE_CLIENT_ID}" \
+#GW#  --rest-resource-type users \
+#GW#  --set admin-permission:create \
+#GW#  --set admin-permission:read \
+#GW#  --set admin-permission:update \
+#GW#  --set admin-permission:download \
+#GW#  --set admin-permission:upload \
+#GW#  --set admin-permission:delete \
+#GW#  --set admin-permission:manage-group-membership \
+#GW#  --set admin-scope:all-resources-in-base \
+#GW#  --set enabled:true
 
-#dsconfig create-delegated-admin-resource-rights  \
-#  --rights-name "administrator-user-${DA_DEFAULT_GRANT_TYPE_CLIENT_ID}" \
-#  --rest-resource-type groups \
-#  --set admin-permission:create \
-#  --set admin-permission:read \
-#  --set admin-permission:update \
-#  --set admin-permission:download \
-#  --set admin-permission:upload \
-#  --set admin-permission:delete \
-#  --set admin-permission:manage-group-membership \
-#  --set admin-scope:all-resources-in-base \
-#  --set enabled:true
+#GW#dsconfig create-delegated-admin-resource-rights  \
+#GW#  --rights-name "administrator-user-${DA_DEFAULT_GRANT_TYPE_CLIENT_ID}" \
+#GW#  --rest-resource-type groups \
+#GW#  --set admin-permission:create \
+#GW#  --set admin-permission:read \
+#GW#  --set admin-permission:update \
+#GW#  --set admin-permission:download \
+#GW#  --set admin-permission:upload \
+#GW#  --set admin-permission:delete \
+#GW#  --set admin-permission:manage-group-membership \
+#GW#  --set admin-scope:all-resources-in-base \
+#GW#  --set enabled:true
 
 #
 # Enable the Delegated Admin REST resource type

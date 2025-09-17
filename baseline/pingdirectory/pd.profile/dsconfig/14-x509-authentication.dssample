@@ -16,11 +16,11 @@ dsconfig create-local-db-index \
     --set index-type:equality
 
 # Sample of how to enable the 'Subject DN to User Attribute' mapper
-#dsconfig set-certificate-mapper-prop \
-#    --mapper-name "Subject DN to User Attribute" \
-#    --set enabled:true
+dsconfig set-certificate-mapper-prop \
+    --mapper-name "Subject DN to User Attribute" \
+    --set enabled:true
 
 # Sample of how to have the SASL EXTERNAL handler use the enabled certificate mapper 'Subject DN to User Attribute'
-#dsconfig set-sasl-mechanism-handler-prop \
-#    --handler-name EXTERNAL \
-#    --set certificate-mapper:"Subject DN to User Attribute"
+dsconfig set-sasl-mechanism-handler-prop \
+    --handler-name EXTERNAL \
+    --set certificate-mapper:"Subject DN to User Attribute"

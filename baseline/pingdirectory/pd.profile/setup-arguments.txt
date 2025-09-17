@@ -31,3 +31,7 @@
     --encryptDataWithPassphraseFromFile "${ENCRYPTION_PASSWORD_FILE}" \
     --rootUserDN "${ROOT_USER_DN}" \
     --rootUserPasswordFile "${ROOT_USER_PASSWORD_FILE}" 
+
+#GW#   --interServerCertPEMFile "ADS_CRT_FILE" \       #GW# need dollar and braces around variable
+#GW#    --interServerCertPrivateKeyFile "ADS_KEY_FILE" #GW# need dollar and braces around variable
+

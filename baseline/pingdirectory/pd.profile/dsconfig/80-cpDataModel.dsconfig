@@ -9,22 +9,22 @@ dsconfig create-local-db-index --backend-name userRoot --index-name cpSAMAccount
 dsconfig create-local-db-index --backend-name userRoot --index-name employeeType --set index-type:equality
 dsconfig create-local-db-index --backend-name userRoot --index-name cpObjectGUID --set index-type:equality
 
-dsconfig create-plugin --plugin-name "Accessidentified Remove Leavers" --type purge-expired-data --set enabled:true --set datetime-attribute:cpleaverdate --set "expiration-offset:1 m"
+dsconfig create-plugin --plugin-name "Capgemini Remove Leavers" --type purge-expired-data --set enabled:true --set datetime-attribute:cpleaverdate --set "expiration-offset:1 m"
 
 #Identity References VA to set cplegacyentry for Corp users
-dsconfig create-virtual-attribute --name LinkTolegacyDomains --type identify-references --set enabled:true --set attribute-type:cplegacyentry --set base-dn:ou=CorpUsers,dc=azure,dc=accessidentifiedcloud,dc=com --set referenced-by-attribute:cplinkedentry --set reference-search-base-dn:ou=AltranUsers,dc=azure,dc=accessidentifiedcloud,dc=com --set reference-search-base-dn:ou=AricentUsers,dc=azure,dc=accessidentifiedcloud,dc=com
+dsconfig create-virtual-attribute --name LinkTolegacyDomains --type identify-references --set enabled:true --set attribute-type:cplegacyentry --set base-dn:ou=CorpUsers,dc=capgemini,dc=com --set referenced-by-attribute:cplinkedentry --set reference-search-base-dn:ou=AltranUsers,dc=capgemini,dc=com --set reference-search-base-dn:ou=AricentUsers,dc=capgemini,dc=com
 
 #Mirrored VAs
 #dsconfig create-virtual-attribute --name "CPADAccountOther VA" --type mirror --set enabled:true --set attribute-type:cpADAccountOther --set source-attribute:cpADAccount --set source-entry-dn-attribute:cplinkedentry
 
 #CP Mirror VA for UPNs - corp
-dsconfig create-virtual-attribute --name "CP Mirror VA for UPNs - corp" --type mirror --set enabled:true --set attribute-type:cpupnother --set base-dn:ou=CorpUsers,dc=azure,dc=accessidentifiedcloud,dc=com --set conflict-behavior:merge-real-and-virtual --set source-attribute:cpupn --set source-entry-dn-attribute:cplegacyentry
+dsconfig create-virtual-attribute --name "CP Mirror VA for UPNs - corp" --type mirror --set enabled:true --set attribute-type:cpupnother --set base-dn:ou=CorpUsers,dc=capgemini,dc=com --set conflict-behavior:merge-real-and-virtual --set source-attribute:cpupn --set source-entry-dn-attribute:cplegacyentry
 
 #CP Mirror VA for UPNs - legacy
-dsconfig create-virtual-attribute --name "CP Mirror VA for UPNs - legacy" --type mirror --set enabled:true --set attribute-type:cpupnother --set base-dn:ou=AltranUsers,dc=azure,dc=accessidentifiedcloud,dc=com --set base-dn:ou=AricentUsers,dc=azure,dc=accessidentifiedcloud,dc=com --set conflict-behavior:merge-real-and-virtual --set source-attribute:cpupn --set source-entry-dn-attribute:cplinkedentry
+dsconfig create-virtual-attribute --name "CP Mirror VA for UPNs - legacy" --type mirror --set enabled:true --set attribute-type:cpupnother --set base-dn:ou=AltranUsers,dc=capgemini,dc=com --set base-dn:ou=AricentUsers,dc=capgemini,dc=com --set conflict-behavior:merge-real-and-virtual --set source-attribute:cpupn --set source-entry-dn-attribute:cplinkedentry
 
 #CP Mirror VA for ADAccounts - corp
-dsconfig create-virtual-attribute --name "CP Mirror VA for ADAccounts - corp" --type mirror --set enabled:true --set attribute-type:cpADAccountOther --set base-dn:ou=CorpUsers,dc=azure,dc=accessidentifiedcloud,dc=com --set conflict-behavior:merge-real-and-virtual --set source-attribute:cpADAccount --set source-entry-dn-attribute:cplegacyentry
+dsconfig create-virtual-attribute --name "CP Mirror VA for ADAccounts - corp" --type mirror --set enabled:true --set attribute-type:cpADAccountOther --set base-dn:ou=CorpUsers,dc=capgemini,dc=com --set conflict-behavior:merge-real-and-virtual --set source-attribute:cpADAccount --set source-entry-dn-attribute:cplegacyentry
 
 #CP Mirror VA for ADAccounts - legacy
-dsconfig create-virtual-attribute --name "CP Mirror VA for ADDomains - legacy" --type mirror --set enabled:true --set attribute-type:cpADAccountOther --set base-dn:ou=AltranUsers,dc=azure,dc=accessidentifiedcloud,dc=com --set base-dn:ou=AricentUsers,dc=azure,dc=accessidentifiedcloud,dc=com --set conflict-behavior:merge-real-and-virtual --set source-attribute:cpADAccount --set source-entry-dn-attribute:cplinkedentry
+dsconfig create-virtual-attribute --name "CP Mirror VA for ADDomains - legacy" --type mirror --set enabled:true --set attribute-type:cpADAccountOther --set base-dn:ou=AltranUsers,dc=capgemini,dc=com --set base-dn:ou=AricentUsers,dc=capgemini,dc=com --set conflict-behavior:merge-real-and-virtual --set source-attribute:cpADAccount --set source-entry-dn-attribute:cplinkedentry
