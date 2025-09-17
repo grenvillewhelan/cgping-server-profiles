@@ -30,6 +30,6 @@ dsconfig create-pass-through-authentication-handler \
     --set search-base-dn:dc=corp,dc=capgemini,dc=com  \
     --set "search-filter-pattern:sAMAccountName={cpSAMAccountName}"
 
-dsconfig set-pass-through-authentication-handler-prop \
-    --handler-name "P1AS Aggregate PTA Handler"  \
-    --add "subordinate-pass-through-authentication-handler:CorpUsers PTA"
+#GW#dsconfig set-pass-through-authentication-handler-prop \
+#GW#    --handler-name "P1AS Aggregate PTA Handler"  \
+#GW#    --add "subordinate-pass-through-authentication-handler:CorpUsers PTA"
