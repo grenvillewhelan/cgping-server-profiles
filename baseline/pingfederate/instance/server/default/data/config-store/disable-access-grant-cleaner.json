@@ -1,0 +1,10 @@
+{
+    "bundle"  :  "timer-intervals",
+    "method"  :  "put",
+    "payload" :
+    {
+     "id": "AccessGrantCleanerInterval",
+     "type": "STRING",
+     "stringValue": "0"
+   }
+ }

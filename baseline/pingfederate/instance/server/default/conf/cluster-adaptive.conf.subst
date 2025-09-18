@@ -30,7 +30,7 @@ rebalance.rpc.timeout=5000
 # The node group identifier cannot contain whitespace, but all other characters
 # are allowed. It is recommended to use a short string, such as a single
 # character, to reduce the size of tokens that include this value.
-node.group.id=${PF_NODE_GROUP_ID}
+node.group.id=${REGION}
 
 # Determines whether user sessions are replicated asynchronously to other node
 # groups. This includes adapter session attributes, authentication sessions and
@@ -48,12 +48,8 @@ inter.group.replicate.reference.tokens.synchronous=true
 
 # Determines whether assertion replay state is replicated asynchronously to
 # other node groups.
-inter.group.replicate.assertion.replay=true
+inter.group.replicate.assertion.replay=false
 
 # Determines whether account locking state is replicated asynchronously to other
 # node groups.
 inter.group.replicate.account.locking=true
-
-# Determines whether SSO transaction state is replicated asynchronously to other
-# node groups.
-inter.group.replicate.transaction.state=false

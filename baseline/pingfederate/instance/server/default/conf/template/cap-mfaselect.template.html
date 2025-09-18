@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+#*
+The server renders this HTML page in an end-user's browser when
+needed authentication identifier to further determine
+next authentication method(s)
+
+Velocity variables (identified by the $ character) are generated
+at runtime by the server.
+
+Change text or formatting as needed. Modifying Velocity statements
+is not recommended as it may interfere with expected server behavior.
+*#
+
+<!-- template name: cap-mfaselect.template.html -->
+
+#set( $messageKeyPrefix = "authentication.identifier.template." )
+
+<html lang="$locale.getLanguage()" dir="ltr">
+<head>
+    #if ($existing_identifiers.size() > 0)
+    <title>$templateMessages.getMessage($messageKeyPrefix, "selectTitle")</title>
+    #else
+    <title>$templateMessages.getMessage($messageKeyPrefix, "inputTitle")</title>
+    #end
+    <base href="$CurrentPingFedBaseURL"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+    <style>
+        #postButton {
+            #if ($existing_identifiers.size() > 0)
+            display:none;
+            #end
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="assets/css/cap-main.css"/>
+</head>
+
+<body onload="setFocus();">
+
+<div class="ping-container ping-signin login-template">
+
+    <!--
+    if there is a logo present in the 'company-logo' container,
+    then 'has-logo' class should be added to 'ping-header' container.
+    -->
+    <div class="ping-header has-logo">
+        <span class="company-logo"><img src="assets/images/logo-capgemini.png"></span>
+        <text id="company-logo-div-text">
+            Select Validation Method
+        </text>
+    </div>
+    <!-- .ping-header -->
+    <div class="ping-body-container">
+
+        
+
+        <br/>
+        <form method="POST" action="$resume_url" autocomplete="off">
+            <input type="hidden" id="identifierInput" name="$identifier" value=""/>
+            <div class="social-media-container">
+                
+                
+<!--                     <div class="button-container" id='pingid-div'>
+                        <a onclick="selectMFAMethod('pingid');" class="ping-button social-media $htmlSafeAuthSource" title='Ping ID'>Ping ID</a>
+                    </div> -->
+
+                    <div class="button-container" id='mobilepass-div'>
+                        <a onclick="selectMFAMethod('mobilepass');" class="ping-button social-media $htmlSafeAuthSource" title='MobilePass'>MobilePASS Passcode</a>
+                    </div>
+
+                    <div class="button-container" id='emailOTP-div'>
+                        <a onclick="selectMFAMethod('emailOTP');" class="ping-button social-media $htmlSafeAuthSource" title='emailOTP'>Email Passcode</a>
+                    </div>
+                
+                    <div class="button-container" id='SMSOTP-div'>
+                        <a onclick="selectMFAMethod('SMSOTP');" class="ping-button social-media $htmlSafeAuthSource" title='SMSOTP'>SMS Passcode</a>
+                    </div>
+            </div>
+
+  
+
+
+            <input type="hidden" name="$clear_identifier" id="$clear_identifier" value=""/>
+            <input type="hidden" name="$cancel" value="false"/>
+        </form>
+    </div><!-- .ping-body-container -->
+
+
+    <!-- .ping-footer-container -->
+
+</div><!-- .ping-container -->
+
+<script type="text/javascript">
+
+    function removeIdentifier(existingIdentifier) {
+        document.forms[0]['$clear_identifier'].value = existingIdentifier;
+        document.forms[0]['$identifier'].value = '';
+        submitForm();
+    }
+
+    function showIdentifierInputBox() {
+        // update the title text
+        document.title = '$templateMessages.getMessage($messageKeyPrefix, "inputTitle")';
+        // update company-logo-div-text
+        document.getElementById("company-logo-div-text").textContent = '$templateMessages.getMessage($messageKeyPrefix, "inputTitle")';
+        // hide the identifier selection list
+        document.getElementById("existingAccountsSelectionList").style.display = "none";
+        // show the identifier input box
+        document.getElementById("identifierInputLabel").style.display = "inline";
+        document.getElementById("identifierInput").style.display = "inline";
+        document.getElementById("postButton").style.display = "inline-block";
+
+        setFocus();
+    }
+
+    function selectMFAMethod(identifier) {
+        document.forms[0]['$identifier'].value = identifier;
+        submitForm();
+    }
+
+    function selectIdentifier(identifier) {
+        document.forms[0]['$identifier'].value = identifier;
+        postOk();
+    }
+
+    function postOk() {
+        // remove error tips
+        if (document.forms[0]['$identifier'].value !== '') {
+            document.getElementById('username-text').className = 'place-bottom type-alert tooltip-text';
+        }
+        // Add back
+        if (document.forms[0]['$identifier'].value === '') {
+            document.getElementById('username-text').className += ' show';
+        }
+        else {
+            submitForm()
+        }
+    }
+
+    function postCancel()
+    {
+        document.forms[0]['$cancel'].value = 'true';
+        submitForm()
+    }
+
+    function submitForm()
+    {
+        document.forms[0].submit();
+    }
+
+    function postOnReturn(e) {
+        var keycode;
+        if (window.event) keycode = window.event.keyCode;
+        else if (e) keycode = e.which;
+        else return true;
+
+        if (keycode == 13) {
+            postOk();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function setFocus() {
+        var platform = navigator.platform;
+        if (platform != null && platform.indexOf("iPhone") == -1) {
+            document.getElementById('identifierInput').focus();
+        }
+    }
+
+    function setMobile(mobile) {
+        var className = ' mobile',
+            hasClass = (bodyTag.className.indexOf(className) !== -1);
+
+        if (mobile && !hasClass) {
+            bodyTag.className += className;
+
+        } else if (!mobile && hasClass) {
+            bodyTag.className = bodyTag.className.replace(className, '');
+        }
+
+        <!-- Check if this is the PingOne Mobile App -->
+        #if($HttpServletRequest.getHeader('X-Ping-Client-Version'))
+            if (mobile) {
+                bodyTag.className += ' embedded';
+            }
+        #end
+    }
+
+    function getScreenWidth() {
+        return (window.outerHeight) ? window.outerWidth : document.body.clientWidth;
+    }
+
+    var bodyTag = document.getElementsByTagName('body')[0],
+        width = getScreenWidth();
+
+    if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        setMobile(true);
+    } else {
+        setMobile((width <= 480));
+        window.onresize = function() {
+            width = getScreenWidth();
+            setMobile((width <= 480));
+        }
+    }
+
+</script>
+
+</body>
+</html>

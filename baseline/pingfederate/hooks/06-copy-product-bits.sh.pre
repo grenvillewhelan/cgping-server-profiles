@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+ 
+. "${HOOKS_DIR}/pingcommon.lib.sh" >/dev/null 2>&1
+. "${HOOKS_DIR}/utils.lib.sh" >/dev/null 2>&1
+ 
+# Applies the RAW Server Bits jars from the built images into SERVER_ROOT to avoid IK artifact collision.
+# This will only run on server restart which is the 2nd or more deployment.
+ 
+# Removing baked in kits that are causing duplicates due to being baked into image
+rm /opt/server/server/default/deploy/pf-pingone-mfa-adapter-2.1.jar
+rm /opt/server/server/default/deploy/opentoken-adapter-2.7.3.jar
+rm /opt/server/server/default/deploy/pf-pingone-davinci-adapter-1.2.jar
+rm /opt/server/server/default/deploy/x509-certificate-adapter-1.3.1.jar
+rm /opt/server/server/default/deploy/PingIDRadiusPCV-3.0.3.jar
+rm /opt/server/server/default/deploy/pf-pingid-idp-adapter-2.13.2.jar
+rm /opt/server/server/default/deploy/pf-pingid-quickconnection-1.1.1.jar
+rm /opt/server/server/default/deploy/pf-pingone-datastore-2.5.jar
+rm /opt/server/server/default/deploy/pf-pingone-pcv-2.5.jar
+rm /opt/server/server/default/deploy/pf-pingone-quickconnection-2.5.jar
+rm /opt/server/server/default/deploy/pf-pingone-risk-management-adapter-1.2.1.jar
+rm /opt/server/server/default/deploy/pf-pingone-verify-adapter-2.1.jar
+rm /opt/server/server/default/deploy/pf-referenceid-adapter-2.0.4.jar
+ 
+ 
+if test "${RUN_PLAN}" != "START"; then
+ 
+    beluga_log "cleaning up any pre-existing IKs before downloading artifacts"
+    ik_count=$(ls "${SERVER_ROOT_DIR}"/server/default/deploy/*.jar | wc -l)
+    rm -rf "${SERVER_ROOT_DIR}"/server/default/deploy/*.jar
+    beluga_log "Removed ${ik_count} pre-existing IKs"
+ 
+    # Reset server jars to what is from the BRASS base image
+    find "${SERVER_BITS_DIR}"/server/default/deploy -type f -iname "*.jar" -exec cp {} "${SERVER_ROOT_DIR}"/server/default/deploy \;
+fi
