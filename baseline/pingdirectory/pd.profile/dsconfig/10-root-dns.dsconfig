@@ -9,37 +9,37 @@ dsconfig set-root-dn-user-prop \
 #
 # Ping Data Sync User
 #
-#GW#dsconfig create-root-dn-user \
-#GW#    --user-name "pingdatasync"  \
-#GW#    --set "alternate-bind-dn:${SYNC_BIND_DN}"  \
-#GW#    --set alternate-bind-dn:cn=datasync  \
-#GW#    --set inherit-default-root-privileges:false  \
-#GW#    --set privilege:bypass-pw-policy  \
-#GW#    --set privilege:password-reset  \
-#GW#    --set privilege:unindexed-search \
-#GW#    --set password<${ROOT_USER_PASSWORD_FILE}
+dsconfig create-root-dn-user \
+    --user-name "pingdatasync"  \
+    --set "alternate-bind-dn:${SYNC_BIND_DN}"  \
+    --set alternate-bind-dn:cn=datasync  \
+    --set inherit-default-root-privileges:false  \
+    --set privilege:bypass-pw-policy  \
+    --set privilege:password-reset  \
+    --set privilege:unindexed-search \
+    --set password<${ROOT_USER_PASSWORD_FILE}
 
 #
 # Create a user for pingdirectoryproxy
 #
-#GW#dsconfig create-root-dn-user \
-#GW#    --user-name pingdirectoryproxy  \
-#GW#    --set alternate-bind-dn:cn=pingdirectoryproxy  \
-#GW#    --set alternate-bind-dn:cn=proxy  \
-#GW#    --set privilege:proxied-auth \
-#GW#    --set password<${ROOT_USER_PASSWORD_FILE}
+dsconfig create-root-dn-user \
+    --user-name pingdirectoryproxy  \
+    --set alternate-bind-dn:cn=pingdirectoryproxy  \
+    --set alternate-bind-dn:cn=proxy  \
+    --set privilege:proxied-auth \
+    --set password<${ROOT_USER_PASSWORD_FILE}
 
 #
 # Create a user for pingdatagovernance
 #
-#GW#dsconfig create-root-dn-user \
-#GW#    --user-name pingdatagovernance \
-#GW#    --set alternate-bind-dn:cn=pingdatagovernance \
-#GW#    --set alternate-bind-dn:cn=datagov \
-#GW#    --set password<${ROOT_USER_PASSWORD_FILE} \
-#GW#    --set inherit-default-root-privileges:false \
-#GW#    --set privilege:password-reset \
-#GW#    --set privilege:proxied-auth \
-#GW#    --set privilege:unindexed-search \
-#GW#    --set search-result-entry-limit:100000
+dsconfig create-root-dn-user \
+    --user-name pingdatagovernance \
+    --set alternate-bind-dn:cn=pingdatagovernance \
+    --set alternate-bind-dn:cn=datagov \
+    --set password<${ROOT_USER_PASSWORD_FILE} \
+    --set inherit-default-root-privileges:false \
+    --set privilege:password-reset \
+    --set privilege:proxied-auth \
+    --set privilege:unindexed-search \
+    --set search-result-entry-limit:100000
 
