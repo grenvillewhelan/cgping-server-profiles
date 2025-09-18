@@ -18,7 +18,7 @@ dsconfig create-root-dn-user \
     --set privilege:unindexed-search \
     --set password<${ROOT_USER_PASSWORD_FILE}
 
-#GW#    --set "alternate-bind-dn:${SYNC_BIND_DN}"  # Removed as advised by Sri, PingIdentity
+#GW#    --set "alternate-bind-dn:#$#{SYNC_BIND_DN}"  # Removed as advised by Sri, PingIdentity
 
 #
 # Create a user for pingdirectoryproxy
