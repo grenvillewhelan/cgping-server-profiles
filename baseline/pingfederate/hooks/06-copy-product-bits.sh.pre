@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
  
+echo "NOT RUNNING $0, HOOKS_DIR is \"${HOOKS_DIR}\""
+exit 0
+
 . "${HOOKS_DIR}/pingcommon.lib.sh" >/dev/null 2>&1
 . "${HOOKS_DIR}/utils.lib.sh" >/dev/null 2>&1
  
-echo "NOT RUNNING $0"
-exit 0
-
 # Applies the RAW Server Bits jars from the built images into SERVER_ROOT to avoid IK artifact collision.
 # This will only run on server restart which is the 2nd or more deployment.
  
