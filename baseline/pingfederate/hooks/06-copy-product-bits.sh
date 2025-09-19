@@ -5,6 +5,9 @@
 #- Copies the server bits from the image into the SERVER_ROOT_DIR if
 #- it is a new fresh container.
 #
+
+echo not running $0
+exit 0
  
 # shellcheck source=./pingcommon.lib.sh
 . "${HOOKS_DIR}/pingcommon.lib.sh"
