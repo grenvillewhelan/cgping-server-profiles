@@ -23,6 +23,8 @@ rm /opt/server/server/default/deploy/pf-pingone-risk-management-adapter-1.2.1.ja
 rm /opt/server/server/default/deploy/pf-pingone-verify-adapter-2.1.jar
 rm /opt/server/server/default/deploy/pf-referenceid-adapter-2.0.4.jar
  
+echo "done removes"
+echo "RUN_PLAN is \"${RUN_PLAN}\""
  
 if test "${RUN_PLAN}" != "START"; then
  
