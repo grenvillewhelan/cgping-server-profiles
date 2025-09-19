@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
  
+echo "in $0"
+
 . "${HOOKS_DIR}/pingcommon.lib.sh" >/dev/null 2>&1
 . "${HOOKS_DIR}/utils.lib.sh" >/dev/null 2>&1
  

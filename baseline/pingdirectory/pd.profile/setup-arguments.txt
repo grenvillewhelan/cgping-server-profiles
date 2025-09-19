@@ -21,7 +21,6 @@
     --skipPortCheck \
     --licenseKeyFile "${LICENSE_KEY_FILE}" \
     --location "${REGION}" \
-    --instanceName "${LOCAL_INSTANCE_NAME}" \
     --ldapPort ${LDAP_PORT} \
     --ldapsPort ${LDAPS_PORT} \
     --httpsPort ${HTTPS_PORT} \
@@ -32,6 +31,7 @@
     --rootUserDN "${ROOT_USER_DN}" \
     --rootUserPasswordFile "${ROOT_USER_PASSWORD_FILE}" 
 
+#GW#    --instanceName "${LOCAL_INSTANCE_NAME}" \
 #GW#   --interServerCertPEMFile "ADS_CRT_FILE" \       #GW# need dollar and braces around variable
 #GW#    --interServerCertPrivateKeyFile "ADS_KEY_FILE" #GW# need dollar and braces around variable
 
