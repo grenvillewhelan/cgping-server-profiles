@@ -2,6 +2,9 @@
  
 echo "in $0 HOOKS_DIR is \"${HOOKS_DIR}\""
 
+echo listing ${HOOKS_DIR}
+ls -la ${HOOKS_DIR}
+
 echo sourcing pingcommon.lib.sh
 . "${HOOKS_DIR}/pingcommon.lib.sh" >/dev/null 2>&1
 echo sourcing utils.lib.sh
