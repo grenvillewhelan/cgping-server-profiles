@@ -5,7 +5,7 @@ echo "in $0 HOOKS_DIR is \"${HOOKS_DIR}\""
 echo sourcing pingcommon.lib.sh
 . "${HOOKS_DIR}/pingcommon.lib.sh" >/dev/null 2>&1
 echo sourcing utils.lib.sh
-. "${HOOKS_DIR}/utils.lib.sh" >/dev/null 2>&1
+. "${HOOKS_DIR}/utils.lib.sh" # >/dev/null 2>&1
  
 # Applies the RAW Server Bits jars from the built images into SERVER_ROOT to avoid IK artifact collision.
 # This will only run on server restart which is the 2nd or more deployment.
