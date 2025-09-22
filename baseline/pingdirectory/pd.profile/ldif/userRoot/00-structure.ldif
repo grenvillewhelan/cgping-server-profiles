@@ -1,0 +1,6 @@
+#GW# Added 22/9/25 on advice of Sri (Ping)
+dn: dc=capgemini,dc=com
+objectClass: top
+objectClass: domain
+dc:capgemini
+
