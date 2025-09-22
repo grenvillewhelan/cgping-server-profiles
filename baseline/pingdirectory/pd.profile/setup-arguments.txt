@@ -20,8 +20,8 @@
     --acceptLicense \
     --skipPortCheck \
     --licenseKeyFile "${LICENSE_KEY_FILE}" \
-    --instanceName "${HOSTNAME}.${K8S_STATEFUL_SET_SERVICE_NAME}" \
     --location "${REGION}" \
+    --instanceName "{LOCAL_INSTANCE_NAME}" \
     --ldapPort ${LDAP_PORT} \
     --ldapsPort ${LDAPS_PORT} \
     --httpsPort ${HTTPS_PORT} \
@@ -33,6 +33,7 @@
     --rootUserPasswordFile "${ROOT_USER_PASSWORD_FILE}" 
 
 #GW#    --instanceName "{LOCAL_INSTANCE_NAME}" \       #GW# replace with hostname/K8S_STATEFUL_SET_SERVICE_NAME
+#GW#    --instanceName "${HOSTNAME}.${K8S_STATEFUL_SET_SERVICE_NAME}" \
 #GW#    --interServerCertPEMFile "ADS_CRT_FILE" \      #GW# need dollar and braces around variable
 #GW#    --interServerCertPrivateKeyFile "ADS_KEY_FILE" #GW# need dollar and braces around variable
 
