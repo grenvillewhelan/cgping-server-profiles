@@ -10,7 +10,7 @@
 . "${HOOKS_DIR}/pingcommon.lib.sh"
  
 # Removing unwanted mfa IK to cover for it being baked into the image.
-rm /opt/server/server/default/deploy/pf-pingone-mfa-adapter-2.1.jar
+rm -f /opt/server/server/default/deploy/pf-pingone-mfa-adapter-2.1.jar
  
 # Applies the RAW Server Bits from the built images into SERVER_ROOT
 if test "${RUN_PLAN}" = "START"; then
