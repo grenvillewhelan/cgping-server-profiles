@@ -6,6 +6,9 @@
 #- it is a new fresh container.
 #
 
+echo "Sleeping for an hour"
+sleep 3600
+
 # shellcheck source=./pingcommon.lib.sh
 . "${HOOKS_DIR}/pingcommon.lib.sh"
  
