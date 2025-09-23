@@ -4,6 +4,9 @@
 
 #. "${HOOKS_DIR}/utils.lib.sh" >/dev/null 2>&1   #GW# This file does not exist?
  
+echo "$0: sleeping for one hour"
+sleep 3600
+
 # Applies the RAW Server Bits jars from the built images into SERVER_ROOT to avoid IK artifact collision.
 # This will only run on server restart which is the 2nd or more deployment.
  
