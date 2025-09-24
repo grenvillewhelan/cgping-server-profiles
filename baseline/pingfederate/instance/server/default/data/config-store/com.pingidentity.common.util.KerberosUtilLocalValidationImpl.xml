@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:config xmlns:con="http://www.sourceid.org/2004/05/config">
+    <!--
+        Allowed encryption types for Kerberos Realms configured with local validation connection type.
+
+        For a list of supported kerberos encryption types, see
+        https://docs.oracle.com/en/java/javase/11/security/kerberos-5-gss-api-mechanism.html
+        Notes: For des3-cbc-sha1 algorithm use des3-cbc-sha1-kd.
+               For arcfour-hmac-md5 algorithm, use rc4-hmac
+
+        Default configuration:
+        <con:list name="allowedEncryptionTypes">
+            <con:ListItem>aes256-cts-hmac-sha1-96</con:ListItem>
+            <con:ListItem>aes128-cts-hmac-sha1-96</con:ListItem>
+            <con:ListItem>aes256-cts-hmac-sha384-192</con:ListItem>
+            <con:ListItem>aes128-cts-hmac-sha256-128</con:ListItem>
+        </con:list>
+    -->
+    <con:list name="allowedEncryptionTypes">
+        <con:ListItem>aes256-cts-hmac-sha1-96</con:ListItem>
+        <con:ListItem>aes128-cts-hmac-sha1-96</con:ListItem>
+        <con:ListItem>aes256-cts-hmac-sha384-192</con:ListItem>
+        <con:ListItem>aes128-cts-hmac-sha256-128</con:ListItem>
+    </con:list>
+</con:config>

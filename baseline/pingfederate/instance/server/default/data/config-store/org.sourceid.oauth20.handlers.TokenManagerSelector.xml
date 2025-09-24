@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c:config xmlns:c="http://www.sourceid.org/2004/05/config">
+    <!--
+        Controls whether multiple access token manager matches are allowed using the resource or aud request parameter
+        when the "Validate Against All Eligible Access Token Managers" setting is disabled.
+
+        Default configuration:
+        <c:item name="allowMultipleAtmMatches" defaultForUpgrade="true">false</c:item>
+     -->
+    <c:item name="allowMultipleAtmMatches" defaultForUpgrade="true">false</c:item>
+</c:config>

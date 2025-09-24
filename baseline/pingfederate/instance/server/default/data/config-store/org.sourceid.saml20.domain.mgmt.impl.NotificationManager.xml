@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:config xmlns:con="http://www.sourceid.org/2004/05/config">
+    <con:item name="EnableEmailNotification">false</con:item>
+    <con:item name="EnableEmailPasswordNotification">false</con:item>
+    <con:item name="EnableCertificateExpirationNotification">false</con:item>
+    <con:item name="EnableMetadataEventNotification">false</con:item>
+    <con:item name="EnableThreadPoolExhaustionNotification">false</con:item>
+    <con:item name="UseSSL">false</con:item>
+    <con:item name="UseTLS">false</con:item>
+    <con:item name="VerifyHostname">false</con:item>
+    <con:item name="UseDebugging">false</con:item>
+    <con:item name="NotificationTo"/>
+    <con:item name="NotificationCertificateExpirationTo"/>
+    <con:item name="NotificationCertInitialEvent"/>
+    <con:item name="NotificationCertFinalEvent"/>
+    <con:item name="NotificationCertMode">NotificationPublisher</con:item>
+    <con:item name="NotificationMetadataEventsTo"/>
+    <con:item name="NotificationThreadPoolExhaustionTo"/>
+    <con:item name="NotificationThreadPoolExhaustionThreadDump">false</con:item>
+    <con:item name="NotificationThreadPoolExhaustionMode">LoggingOnly</con:item>
+    <con:item name="NotificationPublisherCertificates"/>
+    <con:item name="NotificationPublisherLicensing"/>
+    <con:item name="NotificationPublisherMetadata"/>
+    <con:item name="NotificationPublisherThreadPoolExhaustion"/>
+    <con:item name="SmsProviderAccountId"/>
+    <con:item name="SmsProviderFromNumber"/>
+    <con:item name="expiringCertUIWarning">14</con:item>
+    <con:item name="expiredCertUIWarning">14</con:item>
+    <con:item name="EnableBulkheadAlertsNotification">false</con:item>
+    <con:item name="NotificationPublisherBulkheadAlerts"/>
+    <con:item name="NotificationBulkheadAlertsTo"/>
+    <con:item name="NotificationBulkheadAlertsMode">LoggingOnly</con:item>
+    <con:item name="NotificationBulkheadThreadDump">true</con:item>
+</con:config>

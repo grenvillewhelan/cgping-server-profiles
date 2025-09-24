@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c:config xmlns:c="http://www.sourceid.org/2004/05/config">
+
+    <c:item name="Enabled" defaultForUpgrade="false">true</c:item>
+
+    <!--
+     The percentage of PingFederate runtime threads that can be used by a bulkhead before the bulkhead is considered to be at capacity.
+     Additional requests will be rejected with a BulkheadException.
+    -->
+    <c:item name="MaxThreadPoolUsage">0.8</c:item>
+
+    <!--
+     The percentage of PingFederate runtime threads that can be used by a bulkhead before a warning notification is generated.
+    -->
+    <c:item name="ThreadPoolUsageWarningThreshold">0.7</c:item>
+
+    <!--
+     The minimum amount of time before another bulkhead notification can be triggered.
+    -->
+    <c:item name="NotificationQuietPeriodMinutes">15</c:item>
+
+    <!--
+     Whether to enable backoff for bulkheads. When enabled, the maximum number of threads that can be used by a bulkhead will be reduced
+     to a secondary limit specified by the BackOffThreadPoolUsage setting. This secondary limit will be enforced for a duration specified by
+     the BackOffDuration setting.
+    -->
+    <c:item name="BackoffEnabled">false</c:item>
+
+    <!--
+     The percentage of PingFederate runtime threads that can be used by a bulkhead when backoff is enabled.
+    -->
+    <c:item name="BackOffThreadPoolUsage">0.4</c:item>
+
+    <!--
+     The duration in seconds that the backoff limit will be enforced.
+    -->
+    <c:item name="BackOffDurationSeconds">30</c:item>
+
+</c:config>

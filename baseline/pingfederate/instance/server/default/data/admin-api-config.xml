@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:AdminApiConfigs xmlns:urn="urn:pingidentity.com:pf:admin:api">
+    <urn:corsSettings>
+        <urn:enabled>false</urn:enabled>
+        <urn:allowedMethods >GET,POST,DELETE,PUT</urn:allowedMethods>
+        <urn:allowedHeaders >X-XSRF-Header,Content-Type,Accept,Origin,Authorization</urn:allowedHeaders>
+        <!--
+        The maximum amount of time the preflight request can be cached
+        without sending another preflight request in seconds.
+        -->
+        <urn:preflightMaxAge >600</urn:preflightMaxAge>
+    </urn:corsSettings>
+</urn:AdminApiConfigs>

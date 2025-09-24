@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<z:config xmlns:z="http://www.sourceid.org/2004/05/config">
+    <!-- <z:item name="always-return-scope-for-authz-code">false</z:item> -->
+    <!-- <z:item name="always-return-scope-for-client-credentials">false</z:item> -->
+</z:config>

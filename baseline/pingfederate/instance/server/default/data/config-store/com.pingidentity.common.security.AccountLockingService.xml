@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<z:config xmlns:z="http://www.sourceid.org/2004/05/config">
+
+    <!--
+        The number of failed login attempts allowed before a user is locked out. This setting affects all services
+        that utilize account locking except for those that use MaxMaliciousActions described below.
+        Ex. If MaxConsecutiveFailures is set to 3, a client that sends an invalid client secret 3 times or a user that
+        inputs an invalid password 3 times will be locked out.
+
+        [System Default: 3]
+    -->
+    <z:item name="MaxConsecutiveFailures">3</z:item>
+
+    <!--
+        The number of failed login attempts allowed for an individual password
+
+        [System Default: 5]
+    -->
+    <z:item name="MaxPasswordAttempts">5</z:item>
+
+    <!-- 
+        The number of malicious actions allowed before an OAuth client is locked out. Currently, the only operation
+        that is tracked as a malicious action is an attempt to revoke an invalid access token or refresh token.
+        Set this value to -1 to disable.
+
+        [System Default: 5]
+    -->
+    <z:item name="MaxMaliciousActions">5</z:item>
+    
+    <!-- 
+        The period of time in minutes that a user or client is locked out after MaxConsecutiveFailures failed login
+        attempts or after MaxMaliciousActions malicious actions.
+
+        [System Default: 1]
+    -->
+    <z:item name="LockoutPeriod">1</z:item>
+
+    <!--
+        The period of time in minutes that a password is locked out after MaxPasswordAttempts failed login attempts
+
+        [System Default: 5]
+    -->
+    <z:item name="PasswordLockoutPeriod">5</z:item>
+
+    <!--
+        Should the system do password locking.
+
+        [System Default: false]
+    -->
+    <z:item name="DoPasswordLocking">false</z:item>
+
+    <!--
+        Determines whether the system considers the IP address of failed user login attempts when enforcing lockout
+        triggered by MaxConsecutiveFailures or when enforcing lockout on an OAuth client after MaxMaliciousActions.
+
+        If set to true, the system tracks these failure attempts separately for each IP address. A user or client will
+        only be locked out if multiple failed attempts come from the same IP.  If set to false, the system ignores IP
+        addresses and tracks all failed attempts by username or client ID. Attempts from different IPs are combined,
+        meaning a user can be locked out even if the failed attempts come from multiple locations.
+
+        [System Default: true]
+    -->
+    <z:item name="UseIPForLockout" defaultForUpgrade="true">true</z:item>
+</z:config>

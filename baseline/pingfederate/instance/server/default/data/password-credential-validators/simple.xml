@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:PluginConfiguration isInheritExtendedContractAttributes="false" lastModified="2025-08-21T08:23:50.549Z" name="simple" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
+    <urn:Fields/>
+    <urn:AdvancedFields/>
+    <urn:Tables>
+        <urn:Table name="Users">
+            <urn:Row defaultRow="false">
+                <urn:Field name="Username">joe</urn:Field>
+                <urn:Field name="Password">r9Mw5psaMd3fvnkyekALNAuXMSmDLRIs8-TotloIJ3E.2W_2fz6Z.2</urn:Field>
+                <urn:Field name="Confirm Password">xDqLRpA-V4dwDHFyMgJKMXWnBlgPppByPQExDFHhRvU.M4Z3dHUd.2</urn:Field>
+                <urn:Field name="Relax Password Requirements">true</urn:Field>
+            </urn:Row>
+        </urn:Table>
+    </urn:Tables>
+    <urn:ExtendedAttributesAdditionalProperties/>
+</urn:PluginConfiguration>

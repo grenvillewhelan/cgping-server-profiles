@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:config xmlns:con="http://www.sourceid.org/2004/05/config">
+    <con:item name="AutoCreateCertOnEngineNode">true</con:item>
+    <con:item name="DefaultActiveServerAlias">sslservercert</con:item>
+    <con:list name="ActiveServerAliases">
+        <con:ListItem>sslservercert</con:ListItem>
+    </con:list>
+    <con:item name="DefaultActiveAdminServerAlias">sslservercert</con:item>
+    <con:list name="ActiveAdminServerAliases">
+        <con:ListItem>sslservercert</con:ListItem>
+    </con:list>
+</con:config>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:OAuthConfig enableOAuth="true" authzCodeLength="30" authzCodeTimeout="60" restrictPlainPKCE="false" includeIssuerInAuthzResponse="false" rollRefreshTokens="false" refreshTokenRollingGracePeriod="60" rollingInterval="0" rollingIntervalTimeUnit="h" refreshTokenLength="42" atmIdForOAuthGrantManagement="" scopeForOAuthGrantManagement="" globalPersistentGrantExpirationTime="-1" globalPersistentGrantExpirationTimeUnit="d" globalPersistentGrantIdleTimeout="30" globalPersistentGrantIdleTimeoutTimeUnit="d" tokenEndpointBaseUrl="" userAuthzUrl="" registeredAuthzPath="" pendingAuthzTimeout="600" bypassActivationCodeConfirmation="false" devicePollingInterval="5" activationCodeCheckMode="AFTER_AUTHENTICATION" enableCookielessUserAuthzAuthnApi="false" returnIdTokenOnOpenIdWithDeviceAuthzGrant="false" clientSecretRetentionPeriod="0" authzConsentSetting="INTERNAL" parTimeout="60" parRefLength="24" parStatus="ENABLED" allowUnidentifiedClientROCreds="false" allowUnidentifiedClientExtensionGrants="false" jwtSecuredAuthorizationResponseModeLifetime="600" dpopProofRequireNonce="false" dpopProofLifetimeSeconds="120" dpopProofEnforceReplayPrevention="false" bypassAuthorizationForApprovedConsents="false" consentLifetimeDays="-1" requireOfflineAccessScopeToIssueRefreshTokens="false" offlineAccessRequireConsentPrompt="false" xmlns:urn="urn:pingidentity.com:pf:oauth:conf">
+    <urn:UserKeyToAccessTokenMapping contextId="password|pingdirectory" tokenManagerId="jwt">
+        <urn1:AttributeMap Name="Username" Type="Password Credential Validator" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+            <urn1:ValueText>pcv.mail</urn1:ValueText>
+        </urn1:AttributeMap>
+        <urn1:AttributeMap Name="OrgName" Type="Text" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+            <urn1:ValueText>PingIdentity</urn1:ValueText>
+        </urn1:AttributeMap>
+        <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+    </urn:UserKeyToAccessTokenMapping>
+    <urn:UserKeyToAccessTokenMapping contextId="authz_req|apc.Zxp6N6W5PH9onACT" tokenManagerId="jwt">
+        <urn1:AttributeMap Name="Username" Type="Authentication Policy Contract" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+            <urn1:ValueText>apc.subject</urn1:ValueText>
+        </urn1:AttributeMap>
+        <urn1:AttributeMap Name="OrgName" Type="Text" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+            <urn1:ValueText>PingIdentity</urn1:ValueText>
+        </urn1:AttributeMap>
+        <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+    </urn:UserKeyToAccessTokenMapping>
+    <urn:PasswordCredentialValidatorToUserKeyMapping sourcePluginId="pingdirectory">
+        <urn1:AttributeMap Name="USER_KEY" Type="Password Credential Validator" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+            <urn1:ValueText>mail</urn1:ValueText>
+        </urn1:AttributeMap>
+        <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+    </urn:PasswordCredentialValidatorToUserKeyMapping>
+    <urn:ApcToUserKeyMapping sourcePluginId="Zxp6N6W5PH9onACT">
+        <urn1:AttributeMap Name="USER_NAME" Type="Authentication Policy Contract" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+            <urn1:ValueText>subject</urn1:ValueText>
+        </urn1:AttributeMap>
+        <urn1:AttributeMap Name="USER_KEY" Type="Authentication Policy Contract" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+            <urn1:ValueText>subject</urn1:ValueText>
+        </urn1:AttributeMap>
+        <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+    </urn:ApcToUserKeyMapping>
+    <urn:ReuseExistingPersistentGrantForGrant>implicit</urn:ReuseExistingPersistentGrantForGrant>
+    <urn:allowedOrigins>https://localhost</urn:allowedOrigins>
+    <urn:allowedOrigins>https://demo-pingfederate-engine.pingdemo.example</urn:allowedOrigins>
+    <urn:allowedOrigins>https://demo-pingdelegator.pingdemo.example</urn:allowedOrigins>
+</urn:OAuthConfig>

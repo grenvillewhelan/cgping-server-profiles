@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.sourceid.org/2004/05/config">
+    <!-- The maximum number of connections in the pool. -->
+    <item name="max-connections">350</item>
+    <!-- The maximum number of connections per route (port or URL). -->
+    <item name="max-connections-per-route">100</item>
+    <!-- The time available to establish a connection with the remote host in milliseconds. -->
+    <item name="connection-timeout">60000</item>
+    <!-- The time available to retrieve a connection from the connection pool in milliseconds. -->
+    <item name="request-timeout">120000</item>
+    <!-- The amount of time a connection in the pool can be idle before it is cleaned up in milliseconds. -->
+    <item name="connection-idle-timeout">30000</item>
+    <!-- The amount of time a connection can idle before it is returned to the pool for use in milliseconds. -->
+    <item name="keepalive-timeout">1000</item>
+    <!-- The delay before cleaning the http client cache in seconds. -->
+    <item name="cleanup-delay-secs">10</item>
+</config>
