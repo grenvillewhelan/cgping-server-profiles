@@ -21,7 +21,7 @@
     --skipPortCheck \
     --licenseKeyFile "${LICENSE_KEY_FILE}" \
     --location "${REGION}" \
-    --instanceName "${LOCAL_INSTANCE_NAME}" \
+    --instanceName "${HOSTNAME}.${K8S_STATEFUL_SET_SERVICE_NAME}" \
     --ldapPort ${LDAP_PORT} \
     --ldapsPort ${LDAPS_PORT} \
     --httpsPort ${HTTPS_PORT} \
