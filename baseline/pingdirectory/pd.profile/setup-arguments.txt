@@ -31,7 +31,7 @@
     --encryptDataWithPassphraseFromFile "${ENCRYPTION_PASSWORD_FILE}" \
     --rootUserDN "${ROOT_USER_DN}" \
     --rootUserPasswordFile "${ROOT_USER_PASSWORD_FILE}" \
-    --interServerCertPEMFile "${ADS_CRT_FILE)" \
+    --interServerCertPEMFile "${ADS_CRT_FILE}" \
     --interServerCertPrivateKeyFile "${ADS_KEY_FILE}"
 
 #GW#    --instanceName "{LOCAL_INSTANCE_NAME}" \       #GW# replace with hostname/K8S_STATEFUL_SET_SERVICE_NAME
